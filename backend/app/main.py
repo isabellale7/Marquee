@@ -13,6 +13,7 @@ from .database import engine as db_engine, SessionLocal
 from .models import Base
 from .recommender_state import init_engine
 from recommender.db_loader import load_movies, load_ratings
+from .database import SessionLocal as _SessionLocal
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -21,12 +22,16 @@ logger = logging.getLogger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     Base.metadata.create_all(bind=db_engine)
-    logger.info("Loading data and building recommender engine…")
+    logger.info("Loading movies and building content model…")
     with Session(db_engine) as session:
         movies_df = load_movies(session)
-        ratings_df = load_ratings(session)
-    init_engine(movies_df, ratings_df)
-    logger.info("Recommender engine ready. %d movies, %d ratings.", len(movies_df), len(ratings_df))
+
+    def ratings_loader():
+        with _SessionLocal() as s:
+            return load_ratings(s)
+
+    init_engine(movies_df, ratings_loader)
+    logger.info("Content model ready. %d movies loaded. Collab model deferred.", len(movies_df))
     yield
 
 

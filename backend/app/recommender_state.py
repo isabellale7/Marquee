@@ -19,7 +19,7 @@ def get_engine() -> RecommenderEngine:
     return _engine
 
 
-def init_engine(movies_df, ratings_df) -> RecommenderEngine:
+def init_engine(movies_df, ratings_loader) -> RecommenderEngine:
     global _engine
-    _engine = RecommenderEngine(movies_df, ratings_df)
+    _engine = RecommenderEngine(movies_df, ratings_loader=ratings_loader)
     return _engine

@@ -60,13 +60,9 @@ def rate_movie(user_id: int, body: RatingCreate, db: Session = Depends(get_db)):
         db.refresh(rating)
 
     # Potentially refresh the recommender model
-    from ..recommender_state import get_engine as _get_engine
-    from recommender.db_loader import load_movies, load_ratings
     try:
-        eng = _get_engine()
-        movies_df = load_movies(db)
-        ratings_df = load_ratings(db)
-        eng.record_new_rating(movies_df, ratings_df)
+        eng = get_engine()
+        eng.record_new_rating()
     except Exception:
         pass  # never fail a rating write due to model refresh
 

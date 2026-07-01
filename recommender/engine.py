@@ -26,9 +26,10 @@ _lock = threading.Lock()
 
 
 class RecommenderEngine:
-    def __init__(self, movies_df: pd.DataFrame, ratings_df: pd.DataFrame, n_factors: int = 20):
+    def __init__(self, movies_df: pd.DataFrame, ratings_df: pd.DataFrame = None, ratings_loader=None, n_factors: int = 20):
         self.movies_df = movies_df
         self._ratings_df = ratings_df
+        self._ratings_loader = ratings_loader
         self._n_factors = n_factors
         self._ratings_since_refresh = 0
         self.collab = None  # built lazily on first use to reduce startup memory
@@ -38,6 +39,9 @@ class RecommenderEngine:
         if self.collab is None:
             with _lock:
                 if self.collab is None:
+                    if self._ratings_df is None and self._ratings_loader is not None:
+                        logger.info("Loading ratings for collab model (deferred)…")
+                        self._ratings_df = self._ratings_loader()
                     self._build_collab(self.movies_df, self._ratings_df, self._n_factors)
 
     # ------------------------------------------------------------------
@@ -91,22 +95,23 @@ class RecommenderEngine:
     # Public API
     # ------------------------------------------------------------------
 
-    def refresh(self, movies_df: pd.DataFrame, ratings_df: pd.DataFrame) -> None:
+    def refresh(self) -> None:
         """Recompute the collaborative model in-place (thread-safe)."""
         with _lock:
-            self.movies_df = movies_df
+            ratings_df = self._ratings_loader() if self._ratings_loader else self._ratings_df
             self._ratings_df = ratings_df
-            self._build_collab(movies_df, ratings_df, self._n_factors)
+            self._build_collab(self.movies_df, ratings_df, self._n_factors)
             self._ratings_since_refresh = 0
             logger.info("Recommender engine refreshed.")
 
-    def record_new_rating(self, movies_df: pd.DataFrame, ratings_df: pd.DataFrame) -> bool:
+    def record_new_rating(self) -> bool:
         """Call after each new app-user rating. Returns True if a refresh was triggered."""
         with _lock:
-            self._ratings_df = ratings_df
             self._ratings_since_refresh += 1
             if self._ratings_since_refresh >= REFRESH_EVERY_N:
-                self._build_collab(movies_df, ratings_df, self._n_factors)
+                ratings_df = self._ratings_loader() if self._ratings_loader else self._ratings_df
+                self._ratings_df = ratings_df
+                self._build_collab(self.movies_df, ratings_df, self._n_factors)
                 self._ratings_since_refresh = 0
                 logger.info("Auto-refresh triggered after %d new ratings.", REFRESH_EVERY_N)
                 return True
