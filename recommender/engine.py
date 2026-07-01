@@ -28,10 +28,17 @@ _lock = threading.Lock()
 class RecommenderEngine:
     def __init__(self, movies_df: pd.DataFrame, ratings_df: pd.DataFrame, n_factors: int = 20):
         self.movies_df = movies_df
-        self._build_content(movies_df)
-        self._build_collab(movies_df, ratings_df, n_factors)
+        self._ratings_df = ratings_df
         self._n_factors = n_factors
         self._ratings_since_refresh = 0
+        self.collab = None  # built lazily on first use to reduce startup memory
+        self._build_content(movies_df)
+
+    def _ensure_collab(self) -> None:
+        if self.collab is None:
+            with _lock:
+                if self.collab is None:
+                    self._build_collab(self.movies_df, self._ratings_df, self._n_factors)
 
     # ------------------------------------------------------------------
     # Construction helpers
@@ -88,6 +95,7 @@ class RecommenderEngine:
         """Recompute the collaborative model in-place (thread-safe)."""
         with _lock:
             self.movies_df = movies_df
+            self._ratings_df = ratings_df
             self._build_collab(movies_df, ratings_df, self._n_factors)
             self._ratings_since_refresh = 0
             logger.info("Recommender engine refreshed.")
@@ -95,6 +103,7 @@ class RecommenderEngine:
     def record_new_rating(self, movies_df: pd.DataFrame, ratings_df: pd.DataFrame) -> bool:
         """Call after each new app-user rating. Returns True if a refresh was triggered."""
         with _lock:
+            self._ratings_df = ratings_df
             self._ratings_since_refresh += 1
             if self._ratings_since_refresh >= REFRESH_EVERY_N:
                 self._build_collab(movies_df, ratings_df, self._n_factors)
@@ -113,6 +122,7 @@ class RecommenderEngine:
 
     def audience_also_liked(self, movie_id: int, top_n: int = 10):
         """Item-based collaborative: people who liked this also liked..."""
+        self._ensure_collab()
         return self.collab.users_who_liked_this_also_liked(movie_id, top_n=top_n)
 
     def recommend_for_user(self, user_id: int, liked_titles: list, top_n: int = 10, rating_threshold: int = 3):
@@ -129,6 +139,7 @@ class RecommenderEngine:
         if n_rated < rating_threshold:
             return None, "insufficient"
 
+        self._ensure_collab()
         from recommender.db_loader import APP_USER_ID_OFFSET
         collab_user_id = user_id + APP_USER_ID_OFFSET
         is_known = collab_user_id in self.collab._user_pos
