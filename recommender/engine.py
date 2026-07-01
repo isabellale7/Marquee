@@ -52,15 +52,14 @@ class RecommenderEngine:
         genre_docs = movies_df["genres"].str.replace("|", " ", regex=False)
         vectorizer = TfidfVectorizer(token_pattern=r"[^\s]+")
         genre_matrix = vectorizer.fit_transform(genre_docs)
-        similarity = cosine_similarity(genre_matrix)
+        # Do NOT precompute full NxN similarity matrix (~380MB) — compute per-query instead
         title_to_idx = {t.lower(): i for i, t in enumerate(movies_df["title"])}
 
-        # Attach to a ContentBasedRecommender without calling __init__
         cb = ContentBasedRecommender.__new__(ContentBasedRecommender)
         cb.movies = movies_df.copy()
         cb.vectorizer = vectorizer
         cb.genre_matrix = genre_matrix
-        cb.similarity = similarity
+        cb.similarity = None  # computed on-demand
         cb._title_to_idx = title_to_idx
         self.content = cb
 

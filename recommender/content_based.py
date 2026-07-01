@@ -30,12 +30,17 @@ class ContentBasedRecommender:
         matches = [i for t, i in self._title_to_idx.items() if query in t]
         return matches[0] if matches else None
 
+    def _row_similarity(self, idx):
+        """Compute similarity for one movie row on-demand (avoids full NxN matrix)."""
+        vec = self.genre_matrix[idx]
+        return cosine_similarity(vec, self.genre_matrix).flatten()
+
     def similar_to(self, title, top_n=10):
         idx = self.find_movie(title)
         if idx is None:
             return None
-        scores = list(enumerate(self.similarity[idx]))
-        scores = [s for s in scores if s[0] != idx]
+        row = self._row_similarity(idx)
+        scores = [(i, float(s)) for i, s in enumerate(row) if i != idx]
         scores.sort(key=lambda x: x[1], reverse=True)
         top = scores[:top_n]
         result = self.movies.iloc[[i for i, _ in top]].copy()
@@ -48,8 +53,10 @@ class ContentBasedRecommender:
         idxs = [i for i in idxs if i is not None]
         if not idxs:
             return None
-        profile_scores = self.similarity[idxs].mean(axis=0)
-        scores = [(i, s) for i, s in enumerate(profile_scores) if i not in idxs]
+        rows = [self._row_similarity(i) for i in idxs]
+        import numpy as np
+        profile_scores = np.mean(rows, axis=0)
+        scores = [(i, float(s)) for i, s in enumerate(profile_scores) if i not in idxs]
         scores.sort(key=lambda x: x[1], reverse=True)
         top = scores[:top_n]
         result = self.movies.iloc[[i for i, _ in top]].copy()
