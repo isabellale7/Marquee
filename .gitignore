@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Database (regenerated from MovieLens data on deploy)
+*.db
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.claude/
+
+# macOS
+.DS_Store
+
+# Env files
+.env
+.env.local

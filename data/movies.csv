@@ -1,0 +1,220 @@
+movieId,title,year,genres
+1,Toy Story,1995,Animation|Children|Comedy|Fantasy
+2,Jumanji,1995,Adventure|Children|Fantasy
+3,Heat,1995,Action|Crime|Thriller
+4,Sense and Sensibility,1995,Drama|Romance
+5,Braveheart,1995,Action|Drama|War
+6,Se7en,1995,Crime|Mystery|Thriller
+7,The Usual Suspects,1995,Crime|Mystery|Thriller
+8,Casino,1995,Crime|Drama
+9,Apollo 13,1995,Adventure|Drama
+10,Pocahontas,1995,Animation|Children|Musical|Romance
+11,Babe,1995,Children|Comedy|Drama|Fantasy
+12,The Bridges of Madison County,1995,Drama|Romance
+13,Get Shorty,1995,Comedy|Crime|Thriller
+14,Twelve Monkeys,1995,Mystery|Sci-Fi|Thriller
+15,Clueless,1995,Comedy|Romance
+16,Toy Story 2,1999,Animation|Children|Comedy|Fantasy
+17,Star Wars: Episode IV - A New Hope,1977,Action|Adventure|Fantasy|Sci-Fi
+18,Star Wars: Episode V - The Empire Strikes Back,1980,Action|Adventure|Fantasy|Sci-Fi
+19,Star Wars: Episode VI - Return of the Jedi,1983,Action|Adventure|Fantasy|Sci-Fi
+20,Indiana Jones and the Raiders of the Lost Ark,1981,Action|Adventure
+21,Indiana Jones and the Last Crusade,1989,Action|Adventure
+22,Jaws,1975,Action|Horror|Thriller
+23,The Godfather,1972,Crime|Drama
+24,The Godfather: Part II,1974,Crime|Drama
+25,Pulp Fiction,1994,Crime|Drama|Thriller
+26,Forrest Gump,1994,Comedy|Drama|Romance
+27,The Shawshank Redemption,1994,Drama
+28,The Lion King,1994,Animation|Children|Drama|Musical
+29,Speed,1994,Action|Romance|Thriller
+30,True Lies,1994,Action|Adventure|Comedy|Romance|Thriller
+31,Dumb & Dumber,1994,Adventure|Comedy
+32,Léon: The Professional,1994,Action|Crime|Drama|Thriller
+33,Interview with the Vampire,1994,Drama|Horror
+34,Schindler's List,1993,Drama|War
+35,Jurassic Park,1993,Action|Adventure|Sci-Fi|Thriller
+36,Groundhog Day,1993,Comedy|Fantasy|Romance
+37,The Fugitive,1993,Crime|Thriller
+38,Mrs. Doubtfire,1993,Comedy|Drama
+39,Sleepless in Seattle,1993,Comedy|Drama|Romance
+40,The Nightmare Before Christmas,1993,Animation|Children|Fantasy|Musical
+41,Aladdin,1992,Animation|Children|Comedy|Musical
+42,Unforgiven,1992,Drama|Western
+43,A Few Good Men,1992,Crime|Drama|Thriller
+44,Reservoir Dogs,1992,Crime|Thriller
+45,Beauty and the Beast,1991,Animation|Children|Fantasy|Musical|Romance
+46,Terminator 2: Judgment Day,1991,Action|Sci-Fi|Thriller
+47,The Silence of the Lambs,1991,Crime|Drama|Horror|Thriller
+48,Goodfellas,1990,Crime|Drama
+49,Home Alone,1990,Children|Comedy
+50,Dances with Wolves,1990,Adventure|Drama|Western
+51,Edward Scissorhands,1990,Drama|Fantasy|Romance
+52,Back to the Future,1985,Adventure|Comedy|Sci-Fi
+53,Back to the Future Part II,1989,Adventure|Comedy|Sci-Fi
+54,Batman,1989,Action|Crime|Fantasy
+55,Dead Poets Society,1989,Drama
+56,When Harry Met Sally...,1989,Comedy|Romance
+57,Indiana Jones and the Temple of Doom,1984,Action|Adventure|Fantasy
+58,Ghostbusters,1984,Action|Comedy|Fantasy|Sci-Fi
+59,The Terminator,1984,Action|Sci-Fi|Thriller
+60,Amadeus,1984,Drama|Musical
+61,E.T. the Extra-Terrestrial,1982,Children|Drama|Fantasy|Sci-Fi
+62,Blade Runner,1982,Sci-Fi|Thriller
+63,The Shining,1980,Drama|Horror
+64,Alien,1979,Horror|Sci-Fi|Thriller
+65,Apocalypse Now,1979,Drama|War
+66,Rocky,1976,Drama
+67,Taxi Driver,1976,Crime|Drama|Thriller
+68,One Flew Over the Cuckoo's Nest,1975,Drama
+69,Monty Python and the Holy Grail,1975,Adventure|Comedy|Fantasy
+70,The Exorcist,1973,Horror
+71,A Clockwork Orange,1971,Crime|Drama|Sci-Fi|Thriller
+72,2001: A Space Odyssey,1968,Mystery|Sci-Fi
+73,Psycho,1960,Horror|Mystery|Thriller
+74,North by Northwest,1959,Adventure|Mystery|Romance|Thriller
+75,Some Like It Hot,1959,Comedy|Romance
+76,Vertigo,1958,Mystery|Romance|Thriller
+77,Rear Window,1954,Mystery|Thriller
+78,Singin' in the Rain,1952,Comedy|Musical|Romance
+79,Casablanca,1942,Drama|Romance|War
+80,Citizen Kane,1941,Drama|Mystery
+81,The Wizard of Oz,1939,Adventure|Children|Fantasy|Musical
+82,Gone with the Wind,1939,Drama|Romance|War
+83,Snow White and the Seven Dwarfs,1937,Animation|Children|Fantasy|Musical
+84,Toy Story 3,2010,Animation|Children|Comedy|Fantasy
+85,Inception,2010,Action|Sci-Fi|Thriller
+86,The Social Network,2010,Drama
+87,Black Swan,2010,Drama|Thriller
+88,Shutter Island,2010,Mystery|Thriller
+89,Up,2009,Animation|Adventure|Children|Comedy|Drama
+90,Avatar,2009,Action|Adventure|Fantasy|Sci-Fi
+91,District 9,2009,Sci-Fi|Thriller
+92,The Hangover,2009,Comedy
+93,Inglourious Basterds,2009,Action|Drama|War
+94,The Dark Knight,2008,Action|Crime|Drama|Thriller
+95,WALL-E,2008,Animation|Adventure|Children|Romance|Sci-Fi
+96,Slumdog Millionaire,2008,Drama|Romance
+97,Iron Man,2008,Action|Adventure|Sci-Fi
+98,No Country for Old Men,2007,Crime|Drama|Thriller
+99,Ratatouille,2007,Animation|Children|Comedy|Fantasy
+100,Juno,2007,Comedy|Drama|Romance
+101,The Departed,2006,Crime|Drama|Thriller
+102,Pan's Labyrinth,2006,Drama|Fantasy
+103,Little Miss Sunshine,2006,Adventure|Comedy|Drama
+104,The Devil Wears Prada,2006,Comedy|Drama
+105,Batman Begins,2005,Action|Crime
+106,Pride & Prejudice,2005,Drama|Romance
+107,Howl's Moving Castle,2004,Animation|Adventure|Fantasy
+108,Eternal Sunshine of the Spotless Mind,2004,Drama|Romance|Sci-Fi
+109,Shaun of the Dead,2004,Comedy|Horror
+110,Mean Girls,2004,Comedy
+111,The Lord of the Rings: The Return of the King,2003,Action|Adventure|Drama|Fantasy
+112,Finding Nemo,2003,Animation|Adventure|Children|Comedy
+113,Lost in Translation,2003,Comedy|Drama|Romance
+114,Pirates of the Caribbean: The Curse of the Black Pearl,2003,Action|Adventure|Comedy|Fantasy
+115,The Lord of the Rings: The Two Towers,2002,Action|Adventure|Drama|Fantasy
+116,Spirited Away,2001,Animation|Adventure|Children|Fantasy
+117,The Lord of the Rings: The Fellowship of the Ring,2001,Action|Adventure|Drama|Fantasy
+118,Amélie,2001,Comedy|Romance
+119,Shrek,2001,Animation|Adventure|Children|Comedy|Fantasy
+120,"Monsters, Inc.",2001,Animation|Children|Comedy|Fantasy
+121,Gladiator,2000,Action|Adventure|Drama
+122,Memento,2000,Mystery|Thriller
+123,"Crouching Tiger, Hidden Dragon",2000,Action|Adventure|Drama|Romance
+124,American Psycho,2000,Crime|Drama|Horror|Thriller
+125,The Matrix,1999,Action|Sci-Fi|Thriller
+126,Fight Club,1999,Drama|Thriller
+127,American Beauty,1999,Drama
+128,The Sixth Sense,1999,Drama|Horror|Mystery
+129,Notting Hill,1999,Comedy|Romance
+130,10 Things I Hate About You,1999,Comedy|Romance
+131,Being John Malkovich,1999,Comedy|Drama|Fantasy
+132,Saving Private Ryan,1998,Action|Drama|War
+133,The Big Lebowski,1998,Comedy|Crime
+134,There's Something About Mary,1998,Comedy|Romance
+135,Good Will Hunting,1997,Drama|Romance
+136,Titanic,1997,Drama|Romance
+137,Men in Black,1997,Action|Comedy|Sci-Fi
+138,L.A. Confidential,1997,Crime|Drama|Mystery|Thriller
+139,Fargo,1996,Crime|Drama|Thriller
+140,Trainspotting,1996,Drama
+141,Independence Day,1996,Action|Adventure|Sci-Fi
+142,Twister,1996,Action|Adventure|Thriller
+143,Scream,1996,Horror|Mystery|Thriller
+144,No Time to Die,2021,Action|Adventure|Thriller
+145,Dune,2021,Adventure|Drama|Sci-Fi
+146,Spider-Man: No Way Home,2021,Action|Adventure|Fantasy|Sci-Fi
+147,Encanto,2021,Animation|Children|Comedy|Fantasy|Musical
+148,Parasite,2019,Comedy|Drama|Thriller
+149,Knives Out,2019,Comedy|Crime|Mystery|Thriller
+150,Avengers: Endgame,2019,Action|Adventure|Drama|Sci-Fi
+151,Joker,2019,Crime|Drama|Thriller
+152,Once Upon a Time in Hollywood,2019,Comedy|Drama
+153,Spider-Man: Into the Spider-Verse,2018,Animation|Action|Adventure|Sci-Fi
+154,Black Panther,2018,Action|Adventure|Sci-Fi
+155,A Quiet Place,2018,Drama|Horror|Sci-Fi|Thriller
+156,Crazy Rich Asians,2018,Comedy|Romance
+157,Get Out,2017,Horror|Mystery|Thriller
+158,Lady Bird,2017,Comedy|Drama
+159,Coco,2017,Animation|Adventure|Children|Comedy|Fantasy|Musical
+160,Blade Runner 2049,2017,Drama|Mystery|Sci-Fi|Thriller
+161,La La Land,2016,Comedy|Drama|Musical|Romance
+162,Arrival,2016,Drama|Mystery|Sci-Fi
+163,Zootopia,2016,Animation|Adventure|Children|Comedy|Mystery
+164,Hell or High Water,2016,Crime|Drama|Thriller
+165,Mad Max: Fury Road,2015,Action|Adventure|Sci-Fi|Thriller
+166,Inside Out,2015,Animation|Adventure|Children|Comedy|Drama|Fantasy
+167,The Martian,2015,Adventure|Drama|Sci-Fi
+168,Ex Machina,2015,Drama|Sci-Fi|Thriller
+169,Whiplash,2014,Drama|Musical
+170,Gone Girl,2014,Drama|Mystery|Thriller
+171,The Grand Budapest Hotel,2014,Comedy|Crime|Drama
+172,Interstellar,2014,Adventure|Drama|Sci-Fi
+173,Guardians of the Galaxy,2014,Action|Adventure|Comedy|Sci-Fi
+174,12 Years a Slave,2013,Drama|War
+175,Gravity,2013,Action|Drama|Sci-Fi|Thriller
+176,Her,2013,Drama|Romance|Sci-Fi
+177,The Wolf of Wall Street,2013,Comedy|Crime|Drama
+178,Frozen,2013,Animation|Adventure|Children|Comedy|Fantasy|Musical
+179,Django Unchained,2012,Action|Drama|Western
+180,The Avengers,2012,Action|Adventure|Sci-Fi
+181,Silver Linings Playbook,2012,Comedy|Drama|Romance
+182,Looper,2012,Action|Crime|Sci-Fi|Thriller
+183,Drive,2011,Crime|Drama|Thriller
+184,Midnight in Paris,2011,Comedy|Fantasy|Romance
+185,Bridesmaids,2011,Comedy|Romance
+186,Crazy Stupid Love,2011,Comedy|Drama|Romance
+187,The Shape of Water,2017,Drama|Fantasy|Romance
+188,Moonlight,2016,Drama
+189,Spotlight,2015,Crime|Drama|Thriller
+190,Birdman,2014,Comedy|Drama
+191,The Imitation Game,2014,Drama|Thriller|War
+192,Wonder Woman,2017,Action|Adventure|Fantasy
+193,Logan,2017,Action|Drama|Sci-Fi|Thriller
+194,It,2017,Horror|Thriller
+195,Baby Driver,2017,Action|Crime|Thriller
+196,Dunkirk,2017,Action|Drama|War
+197,Hereditary,2018,Drama|Horror|Mystery
+198,Mission: Impossible - Fallout,2018,Action|Adventure|Thriller
+199,Bohemian Rhapsody,2018,Drama|Musical
+200,1917,2019,Action|Drama|War
+201,Ford v Ferrari,2019,Action|Drama
+202,Soul,2020,Animation|Adventure|Children|Comedy|Fantasy|Musical
+203,Tenet,2020,Action|Sci-Fi|Thriller
+204,The Trial of the Chicago 7,2020,Drama|Thriller
+205,CODA,2021,Comedy|Drama|Musical
+206,Everything Everywhere All at Once,2022,Action|Adventure|Comedy|Sci-Fi
+207,Top Gun: Maverick,2022,Action|Adventure|Drama
+208,The Banshees of Inisherin,2022,Comedy|Drama
+209,Glass Onion: A Knives Out Mystery,2022,Comedy|Crime|Mystery|Thriller
+210,Oppenheimer,2023,Drama|History|Thriller
+211,Barbie,2023,Adventure|Comedy|Fantasy
+212,Spider-Man: Across the Spider-Verse,2023,Animation|Action|Adventure|Sci-Fi
+213,Poor Things,2023,Comedy|Drama|Fantasy|Romance
+214,Dune: Part Two,2024,Adventure|Drama|Sci-Fi
+215,The Substance,2024,Drama|Horror|Sci-Fi
+216,Anora,2024,Comedy|Drama
+217,Conclave,2024,Drama|Mystery|Thriller
+218,Wicked,2024,Fantasy|Musical|Romance
+219,Inside Out 2,2024,Animation|Adventure|Children|Comedy|Drama|Fantasy
