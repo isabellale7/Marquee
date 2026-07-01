@@ -44,7 +44,8 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000", "https://marquee-isabellale7.vercel.app", "https://*.vercel.app"],
+    allow_origins=["http://localhost:5173", "http://localhost:3000", "https://marquee-pi.vercel.app", "https://marquee-lm9bmqp1v-marqueeproject.vercel.app"],
+    allow_origin_regex=r"https://marquee-.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
