@@ -2,7 +2,7 @@
 
 A full-stack movie recommendation web app built as a portfolio project. Tell it a movie you like (or build up a rating history), and it recommends what to watch next using a hybrid of content-based and collaborative filtering.
 
-**Live demo:** _(deploy link goes here)_
+**Live demo:** https://marquee-pi.vercel.app
 
 ---
 
