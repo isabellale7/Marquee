@@ -1,4 +1,8 @@
 from __future__ import annotations
+import os
+import urllib.request
+import json
+import threading
 from typing import Optional, List
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
@@ -12,6 +16,30 @@ from ..recommender_state import get_engine
 router = APIRouter(prefix="/movies", tags=["movies"])
 
 PAGE_SIZE = 20
+_TMDB_KEY = os.environ.get("TMDB_API_KEY")
+
+
+def _fetch_and_cache_poster(movie_id: int) -> None:
+    """Fetch poster URL from TMDB in a background thread and cache in DB."""
+    if not _TMDB_KEY:
+        return
+    from ..database import SessionLocal
+    try:
+        with urllib.request.urlopen(
+            f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={_TMDB_KEY}", timeout=5
+        ) as resp:
+            data = json.loads(resp.read())
+        path = data.get("poster_path")
+        if not path:
+            return
+        poster_url = f"https://image.tmdb.org/t/p/w500{path}"
+        with SessionLocal() as db:
+            movie = db.query(Movie).filter(Movie.tmdb_id == movie_id).first()
+            if movie:
+                movie.poster_url = poster_url
+                db.commit()
+    except Exception:
+        pass
 
 
 @router.get("", response_model=MoviePage)
@@ -49,6 +77,8 @@ def get_movie(movie_id: int, db: Session = Depends(get_db)):
     movie = db.query(Movie).filter(Movie.id == movie_id).first()
     if not movie:
         raise HTTPException(status_code=404, detail="Movie not found")
+    if movie.poster_url is None and movie.tmdb_id:
+        threading.Thread(target=_fetch_and_cache_poster, args=(movie.tmdb_id,), daemon=True).start()
     return MovieBase.from_orm_movie(movie)
 
 
