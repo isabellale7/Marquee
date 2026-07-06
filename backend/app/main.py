@@ -29,7 +29,7 @@ def _bulk_fetch_posters():
     api_key = os.environ.get("TMDB_API_KEY")
     if not api_key:
         return
-    time.sleep(5)  # let server finish startup first
+    time.sleep(120)  # wait 2 min after startup before fetching posters
     logger.info("Starting background poster fetch…")
     with SessionLocal() as db:
         movies = db.query(Movie).filter(Movie.tmdb_id.isnot(None), Movie.poster_url.is_(None)).all()
