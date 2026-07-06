@@ -11,9 +11,12 @@ export function Nav({ user, onLogout }: Props) {
 
   return (
     <nav style={{
-      background: 'var(--surface)',
+      background: 'var(--bg)',
       borderBottom: '1px solid var(--border)',
-      padding: '0 16px',
+      padding: '0 24px',
+      position: 'sticky',
+      top: 0,
+      zIndex: 100,
     }}>
       <div style={{
         maxWidth: 1100,
@@ -21,65 +24,66 @@ export function Nav({ user, onLogout }: Props) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        minHeight: 52,
+        height: 56,
         gap: 12,
-        flexWrap: 'wrap',
-        padding: '6px 0',
       }}>
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          {/* Film sprocket icon */}
-          <span style={{ fontSize: 22, lineHeight: 1 }}>🎞</span>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
           <span style={{
-            fontFamily: "'Anton', sans-serif",
-            fontWeight: 400,
-            fontSize: 22,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: 'var(--accent)',
-          }}>Marquee</span>
+            fontSize: 18,
+            fontWeight: 700,
+            letterSpacing: '0.14em',
+            color: '#fff',
+          }}>MARQUEE</span>
         </Link>
 
-        <div style={{ display: 'flex', gap: 6, alignItems: 'center', flexWrap: 'wrap' }}>
-          <Link to="/browse" style={{ color: 'var(--text-muted)', fontSize: 14, padding: '6px 10px', borderRadius: 4, transition: 'color 0.15s' }}
-            onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+        <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+          <Link to="/browse" style={navLinkStyle}
+            onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
             onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}>
             Browse
           </Link>
 
           {user ? (
             <>
-              <Link to="/for-you" style={{ color: 'var(--text-muted)', fontSize: 14, padding: '6px 10px', borderRadius: 4, transition: 'color 0.15s' }}
-                onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+              <Link to="/for-you" style={navLinkStyle}
+                onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
                 onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}>
-                For You
+                For you
               </Link>
               <div style={{
                 display: 'flex', alignItems: 'center', gap: 8,
-                background: 'var(--surface-2)', borderRadius: 6,
-                padding: '4px 12px', fontSize: 13,
+                background: 'var(--surface)', borderRadius: 20,
+                padding: '5px 14px', fontSize: 13, marginLeft: 8,
+                border: '1px solid var(--border)',
               }}>
-                <span style={{ color: 'var(--text-muted)', fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }}>
+                <span style={{ color: 'var(--text-muted)', fontSize: 12 }}>
                   {user.display_name}
                 </span>
                 <button onClick={onLogout} style={{
-                  background: 'none', border: 'none', color: 'var(--accent-2)',
-                  fontSize: 11, fontFamily: "'JetBrains Mono', monospace",
-                  letterSpacing: '0.05em', padding: 0,
-                }}>leave</button>
+                  background: 'none', border: 'none', color: 'var(--text-muted)',
+                  fontSize: 12, padding: 0,
+                }}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent-2)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}>
+                  leave
+                </button>
               </div>
             </>
           ) : (
             <button onClick={() => navigate('/join')} style={{
               background: 'var(--accent)',
-              color: 'var(--bg)',
+              color: '#fff',
               border: 'none',
-              borderRadius: 6,
-              padding: '7px 16px',
+              borderRadius: 20,
+              padding: '8px 18px',
               fontSize: 13,
               fontWeight: 600,
-              letterSpacing: '0.03em',
-            }}>
-              Get Started
+              marginLeft: 8,
+              transition: 'background 0.15s',
+            }}
+              onMouseEnter={e => (e.currentTarget.style.background = 'var(--accent-hover)')}
+              onMouseLeave={e => (e.currentTarget.style.background = 'var(--accent)')}>
+              Join free
             </button>
           )}
         </div>
@@ -87,3 +91,11 @@ export function Nav({ user, onLogout }: Props) {
     </nav>
   );
 }
+
+const navLinkStyle: React.CSSProperties = {
+  color: 'var(--text-muted)',
+  fontSize: 14,
+  padding: '6px 12px',
+  borderRadius: 6,
+  transition: 'color 0.15s',
+};

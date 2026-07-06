@@ -24,14 +24,14 @@ export function ForYou({ userId, ratings, onRate, getRating }: Props) {
   if (!userId) {
     return (
       <div style={{ maxWidth: 540, margin: '80px auto', padding: '0 24px', textAlign: 'center' }}>
-        <p style={{ fontFamily: "'Anton', sans-serif", fontWeight: 400, fontSize: 28, textTransform: 'uppercase', marginBottom: 16 }}>
+        <p style={{ fontWeight: 700,fontSize: 28, textTransform: 'uppercase', marginBottom: 16 }}>
           No profile yet
         </p>
         <p style={{ color: 'var(--text-muted)', fontSize: 14, lineHeight: 1.6, marginBottom: 24 }}>
           Create a taste profile to get personalized recommendations.
         </p>
         <Link to="/join" style={{
-          display: 'inline-block', background: 'var(--accent)', color: 'var(--bg)',
+          display: 'inline-block', background: 'var(--accent)', color: '#fff',
           borderRadius: 6, padding: '12px 24px', fontSize: 14, fontWeight: 600,
         }}>Get started →</Link>
       </div>
@@ -47,11 +47,11 @@ export function ForYou({ userId, ratings, onRate, getRating }: Props) {
   return (
     <div style={{ maxWidth: 1100, margin: '0 auto', padding: '40px 24px' }}>
       <div style={{ marginBottom: 32 }}>
-        <p style={{ fontFamily: "'JetBrains Mono', monospace", color: 'var(--accent)', fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 8 }}>
+        <p style={{ color: 'var(--accent)', fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 8 }}>
           {mode === 'hybrid' ? 'Hybrid · content + collaborative' : mode === 'content' ? 'Content-based · genre similarity' : 'Building your profile'}
         </p>
-        <h1 style={{ fontFamily: "'Anton', sans-serif", fontWeight: 400, fontSize: 'clamp(28px,4vw,42px)', textTransform: 'uppercase', letterSpacing: '0.01em' }}>
-          Recommended for You
+        <h1 style={{ fontWeight: 700, fontSize: 'clamp(26px,4vw,38px)', letterSpacing: '-0.01em' }}>
+          Recommended for you
         </h1>
       </div>
 
@@ -61,7 +61,7 @@ export function ForYou({ userId, ratings, onRate, getRating }: Props) {
           borderRadius: 12, padding: 32, maxWidth: 520,
         }}>
           <div style={{ fontSize: 40, marginBottom: 16 }}>🎬</div>
-          <h2 style={{ fontFamily: "'Anton', sans-serif", fontWeight: 400, fontSize: 22, textTransform: 'uppercase', marginBottom: 12 }}>
+          <h2 style={{ fontWeight: 700,fontSize: 22, textTransform: 'uppercase', marginBottom: 12 }}>
             Rate {threshold - count} more movie{threshold - count !== 1 ? 's' : ''} to unlock picks
           </h2>
           <p style={{ color: 'var(--text-muted)', fontSize: 14, lineHeight: 1.6, marginBottom: 20 }}>
@@ -69,7 +69,7 @@ export function ForYou({ userId, ratings, onRate, getRating }: Props) {
             Once you hit {threshold}, we'll blend your ratings with what audiences like you loved.
           </p>
           <Link to="/browse" style={{
-            display: 'inline-block', background: 'var(--accent)', color: 'var(--bg)',
+            display: 'inline-block', background: 'var(--accent)', color: '#fff',
             borderRadius: 6, padding: '10px 20px', fontSize: 14, fontWeight: 600,
           }}>Browse movies to rate →</Link>
         </div>
@@ -107,7 +107,7 @@ export function ForYou({ userId, ratings, onRate, getRating }: Props) {
       {/* Recent ratings */}
       {ratings.length > 0 && (
         <div style={{ marginTop: 56, paddingTop: 40, borderTop: '1px solid var(--border)' }}>
-          <h2 style={{ fontFamily: "'Anton', sans-serif", fontWeight: 400, fontSize: 22, textTransform: 'uppercase', marginBottom: 20 }}>
+          <h2 style={{ fontWeight: 700,fontSize: 22, textTransform: 'uppercase', marginBottom: 20 }}>
             Your Ratings
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 16 }}>

@@ -70,7 +70,7 @@ export function MovieDetail({ onRate, getRating, userId }: Props) {
   return (
     <div style={{ maxWidth: 1100, margin: '0 auto', padding: '40px 24px' }}>
       {/* Back */}
-      <Link to="/browse" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: 'var(--text-muted)', letterSpacing: '0.1em' }}>
+      <Link to="/browse" style={{ fontSize: 12, color: 'var(--text-muted)', letterSpacing: '0.1em' }}>
         ← BACK TO BROWSE
       </Link>
 
@@ -83,10 +83,10 @@ export function MovieDetail({ onRate, getRating, userId }: Props) {
           }
         </div>
         <div style={{ flex: '1 1 300px' }}>
-          <div style={{ fontFamily: "'JetBrains Mono', monospace", color: 'var(--accent)', fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 10 }}>
+          <div style={{ color: 'var(--text-muted)', fontSize: 13, marginBottom: 10 }}>
             {movie.year ?? '—'} · {movie.genres.join(' · ')}
           </div>
-          <h1 style={{ fontFamily: "'Anton', sans-serif", fontWeight: 400, fontSize: 'clamp(28px,5vw,48px)', textTransform: 'uppercase', lineHeight: 1.05, marginBottom: 20 }}>
+          <h1 style={{ fontWeight: 700, fontSize: 'clamp(24px,5vw,42px)', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: 20 }}>
             {movie.title}
           </h1>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 24 }}>
@@ -94,8 +94,8 @@ export function MovieDetail({ onRate, getRating, userId }: Props) {
               <Link key={g} to={`/browse?genre=${encodeURIComponent(g)}`}>
                 <span style={{
                   background: 'var(--surface-2)', border: '1px solid var(--border)',
-                  borderRadius: 4, padding: '4px 10px', fontSize: 12,
-                  fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.05em',
+                  borderRadius: 20, padding: '4px 12px', fontSize: 12,
+                  letterSpacing: '0.05em',
                   transition: 'border-color 0.15s',
                 }}
                   onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--accent)')}
@@ -109,7 +109,7 @@ export function MovieDetail({ onRate, getRating, userId }: Props) {
           {/* Rating section */}
           {userId ? (
             <div>
-              <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8 }}>
+              <p style={{ fontSize: 11, color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8 }}>
                 Your rating
               </p>
               <StarRating value={myRating} onChange={v => handleRate(movieId, v)} size={28} />
@@ -163,15 +163,15 @@ function RecsSection({ title, subtitle, badge, badgeColor, empty, children }: {
   return (
     <div style={{ marginBottom: 56 }}>
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, flexWrap: 'wrap', marginBottom: 20 }}>
-        <h2 style={{ fontFamily: "'Anton', sans-serif", fontWeight: 400, fontSize: 'clamp(20px,3vw,28px)', textTransform: 'uppercase', letterSpacing: '0.02em' }}>
+        <h2 style={{ fontWeight: 700, fontSize: 'clamp(18px,3vw,24px)', letterSpacing: '-0.01em' }}>
           {title}
         </h2>
-        <span style={{ fontSize: 12, color: 'var(--text-muted)', fontFamily: "'JetBrains Mono', monospace" }}>{subtitle}</span>
+        <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>{subtitle}</span>
       </div>
       {/* Legend */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 16 }}>
         <span style={{ width: 8, height: 8, borderRadius: 2, background: badgeColor, display: 'inline-block' }} />
-        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: '0.1em', color: badgeColor }}>{badge}</span>
+        <span style={{ fontSize: 10, letterSpacing: '0.1em', color: badgeColor }}>{badge}</span>
       </div>
       {children.length === 0
         ? <p style={{ color: 'var(--text-muted)', fontSize: 14 }}>{empty}</p>

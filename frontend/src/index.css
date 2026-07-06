@@ -1,16 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg: #15212B;
-  --surface: #1E2F3C;
-  --surface-2: #283D4C;
-  --surface-3: #2e4557;
-  --accent: #E8A33D;
-  --accent-2: #C1666B;
-  --text: #F2ECDD;
-  --text-muted: #92A6B3;
-  --border: rgba(242, 236, 221, 0.14);
-  --radius: 8px;
+  --bg: #0D0F14;
+  --surface: #161820;
+  --surface-2: #1E2030;
+  --surface-3: #252840;
+  --accent: #6C63FF;
+  --accent-hover: #5A52E8;
+  --accent-2: #FF6B9D;
+  --text: #E8E8F0;
+  --text-muted: #8888AA;
+  --border: rgba(255,255,255,0.08);
+  --border-hover: rgba(108,99,255,0.4);
+  --radius: 10px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -23,23 +25,9 @@ html, body {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
-}
-
-/* Sprocket-hole film strip border at top */
-body::before {
-  content: '';
-  display: block;
-  height: 4px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--accent) 0px,
-    var(--accent) 18px,
-    transparent 18px,
-    transparent 26px
-  );
 }
 
 #root {
@@ -55,12 +43,10 @@ input, select { font-family: inherit; }
 h1, h2, h3 { margin: 0; }
 p { margin: 0; }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--surface); }
 ::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 3px; }
 
-/* Focus ring */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;

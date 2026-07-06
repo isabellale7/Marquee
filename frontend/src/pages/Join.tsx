@@ -39,21 +39,21 @@ export function Join({ onCreateProfile, userId }: Props) {
 
   return (
     <div style={{ maxWidth: 480, margin: '80px auto', padding: '0 24px' }}>
-      <p style={{ fontFamily: "'JetBrains Mono', monospace", color: 'var(--accent)', fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: 16 }}>
+      <p style={{ color: 'var(--accent)', fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: 16 }}>
         Get started
       </p>
-      <h1 style={{ fontFamily: "'Anton', sans-serif", fontWeight: 400, fontSize: 'clamp(28px,5vw,42px)', textTransform: 'uppercase', lineHeight: 1.05, marginBottom: 12 }}>
+      <h1 style={{ fontWeight: 700,fontSize: 'clamp(28px,5vw,42px)', textTransform: 'uppercase', lineHeight: 1.05, marginBottom: 12 }}>
         Create your<br /><span style={{ color: 'var(--accent)' }}>taste profile</span>
       </h1>
       <p style={{ color: 'var(--text-muted)', fontSize: 14, lineHeight: 1.6, marginBottom: 32 }}>
         Pick a display name — that's it. No email or password needed. Rate a few movies and we'll build personalized recommendations from your taste.
       </p>
-      <p style={{ fontSize: 11, color: 'var(--text-muted)', fontFamily: "'JetBrains Mono', monospace", marginBottom: 28, padding: '10px 14px', background: 'var(--surface)', borderRadius: 6, border: '1px solid var(--border)', lineHeight: 1.6 }}>
+      <p style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 28, padding: '10px 14px', background: 'var(--surface)', borderRadius: 6, border: '1px solid var(--border)', lineHeight: 1.6 }}>
         ⚠ Profiles are not password-protected. Your taste profile is stored locally — if you clear your browser data, it's gone.
       </p>
 
       <form onSubmit={submit}>
-        <label style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', display: 'block', marginBottom: 8 }}>
+        <label style={{ fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', display: 'block', marginBottom: 8 }}>
           Display name
         </label>
         <input
@@ -79,7 +79,7 @@ export function Join({ onCreateProfile, userId }: Props) {
 }
 
 const btnStyle: React.CSSProperties = {
-  background: 'var(--accent)', color: 'var(--bg)', border: 'none',
+  background: 'var(--accent)', color: '#fff', border: 'none',
   borderRadius: 6, padding: '13px 24px', fontSize: 15, fontWeight: 600,
   cursor: 'pointer', letterSpacing: '0.02em',
 };

@@ -16,14 +16,20 @@ export function MovieCard({ movie, badge, badgeColor, userRating, onRate }: Prop
     <div style={{
       background: 'var(--surface)',
       border: '1px solid var(--border)',
-      borderRadius: 'var(--radius)',
+      borderRadius: 12,
       overflow: 'hidden',
       display: 'flex',
       flexDirection: 'column',
-      transition: 'border-color 0.15s',
+      transition: 'border-color 0.15s, transform 0.15s',
     }}
-      onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(232,163,61,0.4)')}
-      onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--border)')}
+      onMouseEnter={e => {
+        e.currentTarget.style.borderColor = 'var(--border-hover)';
+        e.currentTarget.style.transform = 'translateY(-2px)';
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.borderColor = 'var(--border)';
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}
     >
       <Link to={`/movies/${movie.id}`} style={{ display: 'block' }}>
         <div style={{ aspectRatio: '2/3', background: 'var(--surface-2)', overflow: 'hidden' }}>
@@ -33,28 +39,27 @@ export function MovieCard({ movie, badge, badgeColor, userRating, onRate }: Prop
           }
         </div>
       </Link>
-      <div style={{ padding: '12px', flex: 1, display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <div style={{ padding: '10px 12px', flex: 1, display: 'flex', flexDirection: 'column', gap: 5 }}>
         {badge && (
           <span style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 10,
-            letterSpacing: '0.1em',
+            fontSize: 9,
+            letterSpacing: '0.12em',
             textTransform: 'uppercase',
             color: badgeColor ?? 'var(--accent)',
-            marginBottom: 2,
+            fontWeight: 600,
           }}>{badge}</span>
         )}
         <Link to={`/movies/${movie.id}`}>
-          <div style={{ fontFamily: "'Anton', sans-serif", fontWeight: 400, fontSize: 15, lineHeight: 1.1, textTransform: 'uppercase' }}>
+          <div style={{ fontWeight: 600, fontSize: 13, lineHeight: 1.3, color: 'var(--text)' }}>
             {movie.title}
           </div>
         </Link>
-        <div style={{ fontSize: 12, color: 'var(--text-muted)', fontFamily: "'JetBrains Mono', monospace" }}>
+        <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>
           {movie.year ?? '—'} · {movie.genres.slice(0, 2).join(', ')}
         </div>
         {onRate !== undefined && (
-          <div style={{ marginTop: 'auto', paddingTop: 8 }}>
-            <StarRating value={userRating ?? null} onChange={v => onRate(movie.id, v)} size={16} />
+          <div style={{ marginTop: 'auto', paddingTop: 6 }}>
+            <StarRating value={userRating ?? null} onChange={v => onRate(movie.id, v)} size={14} />
           </div>
         )}
       </div>

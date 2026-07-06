@@ -43,10 +43,10 @@ export function Browse({ onRate, getRating }: Props) {
   return (
     <div style={{ maxWidth: 1100, margin: '0 auto', padding: '40px 24px' }}>
       <div style={{ marginBottom: 32 }}>
-        <p style={{ fontFamily: "'JetBrains Mono', monospace", color: 'var(--accent)', letterSpacing: '0.15em', fontSize: 11, textTransform: 'uppercase', marginBottom: 8 }}>
+        <p style={{ fontSize: 11, letterSpacing: '0.15em', color: 'var(--accent)', fontWeight: 600, textTransform: 'uppercase', marginBottom: 8 }}>
           Catalog
         </p>
-        <h1 style={{ fontFamily: "'Anton', sans-serif", fontWeight: 400, fontSize: 'clamp(28px,4vw,42px)', textTransform: 'uppercase', letterSpacing: '0.01em' }}>
+        <h1 style={{ fontSize: 'clamp(26px,4vw,38px)', fontWeight: 700, letterSpacing: '-0.01em' }}>
           Browse Movies
         </h1>
       </div>
@@ -81,20 +81,20 @@ export function Browse({ onRate, getRating }: Props) {
 
       {/* Results count */}
       {data && (
-        <p style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 20, fontFamily: "'JetBrains Mono', monospace" }}>
+        <p style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 20 }}>
           {data.total.toLocaleString()} movies · page {data.page} of {totalPages}
         </p>
       )}
 
       {/* Grid */}
       {loading && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 20 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: 16 }}>
           {Array.from({ length: 20 }).map((_, i) => <MovieCardSkeleton key={i} />)}
         </div>
       )}
       {!loading && data && (
         <>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 20 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: 16 }}>
             {data.items.map(m => (
               <MovieCard
                 key={m.id}
@@ -106,7 +106,7 @@ export function Browse({ onRate, getRating }: Props) {
           </div>
           {/* Pagination */}
           {totalPages > 1 && (
-            <div style={{ display: 'flex', gap: 8, justifyContent: 'center', marginTop: 40, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 6, justifyContent: 'center', marginTop: 40, flexWrap: 'wrap' }}>
               <PageBtn disabled={page <= 1} onClick={() => setPage(p => p - 1)}>← Prev</PageBtn>
               {Array.from({ length: Math.min(totalPages, 7) }, (_, i) => {
                 const p = page <= 4 ? i + 1 : page - 3 + i;
@@ -126,23 +126,23 @@ function PageBtn({ children, onClick, disabled, active }: { children: React.Reac
   return (
     <button onClick={onClick} disabled={disabled} style={{
       background: active ? 'var(--accent)' : 'var(--surface)',
-      color: active ? 'var(--bg)' : 'var(--text)',
+      color: active ? '#fff' : 'var(--text)',
       border: '1px solid var(--border)',
-      borderRadius: 6, padding: '6px 14px', fontSize: 13,
+      borderRadius: 8, padding: '6px 14px', fontSize: 13,
       opacity: disabled ? 0.4 : 1,
       cursor: disabled ? 'default' : 'pointer',
+      fontWeight: active ? 600 : 400,
     }}>{children}</button>
   );
 }
 
 const labelStyle: React.CSSProperties = {
-  fontFamily: "'JetBrains Mono', monospace",
   fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase',
-  color: 'var(--text-muted)', display: 'block', marginBottom: 6,
+  color: 'var(--text-muted)', fontWeight: 600, display: 'block', marginBottom: 6,
 };
 
 const inputStyle: React.CSSProperties = {
   width: '100%', background: 'var(--surface)',
   border: '1px solid var(--border)', color: 'var(--text)',
-  fontSize: 14, padding: '10px 14px', borderRadius: 6, outline: 'none',
+  fontSize: 14, padding: '10px 14px', borderRadius: 8, outline: 'none',
 };

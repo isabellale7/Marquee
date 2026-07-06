@@ -38,33 +38,26 @@ export function Home() {
   };
 
   return (
-    <div style={{ maxWidth: 760, margin: '0 auto', padding: '64px 24px 48px' }}>
-      {/* Header */}
-      <div style={{ marginBottom: 40 }}>
-        <p style={{ fontFamily: "'JetBrains Mono', monospace", color: 'var(--accent)', letterSpacing: '0.18em', fontSize: 12, textTransform: 'uppercase', marginBottom: 14 }}>
-          Now showing
+    <div style={{ maxWidth: 720, margin: '0 auto', padding: '72px 24px 48px' }}>
+      <div style={{ marginBottom: 48 }}>
+        <p style={{ fontSize: 12, letterSpacing: '0.18em', color: 'var(--accent)', fontWeight: 600, textTransform: 'uppercase', marginBottom: 16 }}>
+          Discover your next watch
         </p>
         <h1 style={{
-          fontFamily: "'Anton', sans-serif",
-          fontWeight: 400,
-          textTransform: 'uppercase',
-          fontSize: 'clamp(34px,6vw,58px)',
-          lineHeight: 1.02,
-          letterSpacing: '0.01em',
-          marginBottom: 12,
+          fontSize: 'clamp(32px,6vw,54px)',
+          fontWeight: 700,
+          lineHeight: 1.1,
+          letterSpacing: '-0.02em',
+          marginBottom: 16,
         }}>
-          Your next <span style={{ color: 'var(--accent)' }}>great</span><br />watch starts here.
+          Movies that match<br /><span style={{ color: 'var(--accent)' }}>your taste.</span>
         </h1>
-        <p style={{ color: 'var(--text-muted)', fontSize: 15, maxWidth: 480, lineHeight: 1.6 }}>
-          Tell us a movie you love, and we'll find what to watch next — using genre similarity and what audiences with your taste rated highly.
+        <p style={{ color: 'var(--text-muted)', fontSize: 16, maxWidth: 480, lineHeight: 1.7 }}>
+          Rate films you've seen. Get recommendations that actually fit — powered by genre similarity and collaborative filtering.
         </p>
       </div>
 
-      {/* Search combobox */}
-      <div style={{ position: 'relative', marginBottom: 24 }}>
-        <label style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', display: 'block', marginBottom: 8 }}>
-          Search for a movie
-        </label>
+      <div style={{ position: 'relative', marginBottom: 20 }}>
         <input
           ref={inputRef}
           value={query}
@@ -72,7 +65,7 @@ export function Home() {
           onKeyDown={onKey}
           onFocus={() => results.length > 0 && setOpen(true)}
           onBlur={() => setTimeout(() => setOpen(false), 150)}
-          placeholder="e.g. Inception, The Godfather…"
+          placeholder="Search 9,700+ movies…"
           aria-autocomplete="list"
           aria-expanded={open}
           style={{
@@ -80,9 +73,9 @@ export function Home() {
             background: 'var(--surface)',
             border: '1px solid var(--border)',
             color: 'var(--text)',
-            fontSize: 18,
-            padding: '16px 18px',
-            borderRadius: 6,
+            fontSize: 16,
+            padding: '16px 20px',
+            borderRadius: 12,
             outline: 'none',
             transition: 'border-color 0.15s',
           }}
@@ -92,9 +85,9 @@ export function Home() {
         {open && (
           <div role="listbox" style={{
             position: 'absolute', top: 'calc(100% + 6px)', left: 0, right: 0,
-            background: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 6,
+            background: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 12,
             maxHeight: 320, overflowY: 'auto', zIndex: 20,
-            boxShadow: '0 12px 28px rgba(0,0,0,.35)',
+            boxShadow: '0 16px 40px rgba(0,0,0,.5)',
           }}>
             {results.map((m, i) => (
               <div
@@ -106,47 +99,46 @@ export function Home() {
                 style={{
                   padding: '11px 16px',
                   cursor: 'pointer',
-                  fontSize: 15,
+                  fontSize: 14,
                   display: 'flex',
                   justifyContent: 'space-between',
                   gap: 12,
-                  background: i === activeIdx ? 'rgba(232,163,61,0.14)' : 'transparent',
+                  background: i === activeIdx ? 'rgba(108,99,255,0.12)' : 'transparent',
+                  borderRadius: i === activeIdx ? 8 : 0,
                 }}
               >
                 <span>{m.title}</span>
-                <span style={{ color: 'var(--text-muted)', fontFamily: "'JetBrains Mono', monospace", fontSize: 13, flexShrink: 0 }}>{m.year}</span>
+                <span style={{ color: 'var(--text-muted)', fontSize: 13, flexShrink: 0 }}>{m.year}</span>
               </div>
             ))}
           </div>
         )}
       </div>
 
-      {/* CTA row */}
-      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
         <a href="/browse" style={{
           background: 'var(--surface)', border: '1px solid var(--border)',
-          color: 'var(--text)', borderRadius: 6, padding: '10px 20px', fontSize: 14, fontWeight: 500,
+          color: 'var(--text)', borderRadius: 10, padding: '11px 20px', fontSize: 14, fontWeight: 500,
         }}>Browse all movies →</a>
         <a href="/join" style={{
-          background: 'var(--accent)', color: 'var(--bg)',
-          borderRadius: 6, padding: '10px 20px', fontSize: 14, fontWeight: 600,
+          background: 'var(--accent)', color: '#fff',
+          borderRadius: 10, padding: '11px 20px', fontSize: 14, fontWeight: 600,
         }}>Create a taste profile</a>
       </div>
 
-      {/* How it works */}
-      <div style={{ marginTop: 72, paddingTop: 48, borderTop: '1px solid var(--border)' }}>
-        <p style={{ fontFamily: "'JetBrains Mono', monospace", color: 'var(--accent)', letterSpacing: '0.15em', fontSize: 11, textTransform: 'uppercase', marginBottom: 24 }}>
+      <div style={{ marginTop: 80, paddingTop: 48, borderTop: '1px solid var(--border)' }}>
+        <p style={{ fontSize: 11, letterSpacing: '0.15em', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', marginBottom: 28 }}>
           How it works
         </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 24 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 28 }}>
           {[
-            { n: '01', title: 'Find a film', body: 'Search for any movie in our catalog of 9,700+ titles from MovieLens.' },
+            { n: '01', title: 'Find a film', body: 'Search for any movie in our catalog of 9,700+ titles.' },
             { n: '02', title: 'Get similar picks', body: '"More like this" uses genre similarity. No account needed.' },
-            { n: '03', title: 'Rate to unlock', body: 'Rate 3+ movies to switch to hybrid recommendations — what audiences like you loved.' },
+            { n: '03', title: 'Rate to unlock', body: 'Rate 3+ movies to unlock hybrid recommendations powered by collaborative filtering.' },
           ].map(step => (
             <div key={step.n}>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--accent)', marginBottom: 8 }}>{step.n}</div>
-              <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 16, textTransform: 'uppercase', marginBottom: 6 }}>{step.title}</div>
+              <div style={{ fontSize: 11, color: 'var(--accent)', fontWeight: 600, marginBottom: 8, letterSpacing: '0.1em' }}>{step.n}</div>
+              <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 6 }}>{step.title}</div>
               <div style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.6 }}>{step.body}</div>
             </div>
           ))}
